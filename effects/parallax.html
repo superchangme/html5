@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+            height: 500000px;
+        }
+         .parallax{
+             margin: 500px 0;
+         }
+        .item{
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        .item.fixed{
+            z-index: 1;
+        }
+        .item.fixed img{
+            position: fixed;
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+<div class="parallax">
+    <div class="item">
+        <img src="../images/Lighthouse.jpg">
+    </div>
+    <div class="item">
+        <img src="../images/e.jpg">
+    </div>
+    <div class="item">
+        <img src="../images/Hydrangeas.jpg">
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script>
+    $.fn.parallax=function(options){
+        var settings = jQuery.extend({
+            item: '.item',
+            height:768,
+            fixClass:"fixed"/*,
+            ignore:".custom-check",
+            event: "blur",
+            element:null,
+            parent:"label",
+            delegateBtn:"",
+            tips:".form-tips,.tips",
+            customEvent:[],
+            checkAll:true*/
+        }, options),wHeight=$(window).height();
+         return this.each(function(){
+              var scrollTop=document.body.scrollTop||document.documentElement.scrollTop,
+                      pHeight=$(this).height(),pTop=$(this).offset().top,
+                      items=$(this).find(".item"),oldDir,isDown=true,isReverse=false,isFixed=false,next,nOffset,
+                      prev,pOffset,current=items.eq(0),old,offset=current.offset().top,cHeight=current.height();
+             $(document).on("mousewheel",function(e){
+                 scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+                 if(pTop+pHeight-scrollTop<=wHeight||pTop-scrollTop>wHeight){
+                     current.removeClass("fixed");
+                     return;
+                 }
+                 var target= e.originalEvent;
+                 /*if(!isFixed&&offset-scrollTop<=0){
+                     current.addClass("fixed");
+                     isFixed=true;
+                 }
+*/
+                 oldDir=isDown;
+                 if(target.wheelDelta>0){
+                     isDown=false;
+                 }else{
+                     isDown=true;
+                 }
+                 isReverse=oldDir!=isDown;
+                 if(isReverse){
+                     next=null;
+                 }
+                 console.log((offset+cHeight-scrollTop<=wHeight),scrollTop)
+                 if((next=next||current.next())&&next.length&&(offset+cHeight-scrollTop<=wHeight)){
+                     current.addClass("fixed").css("top",wHeight-cHeight);
+                     current.siblings().removeClass("fixed");
+                     current=next;
+                     offset=current.offset().top;
+                     cHeight=current.height();
+                 }
+              });
+             items.css("height",settings.height).each(function(index,item){
+                    if($(item).offset().top+settings.height-scrollTop<wHeight-50){
+                        $(this).addClass("fixed");
+                        current=$(item);
+                        offset =$(item).offset().top;
+                        return false;
+                    }
+             });
+         });
+    };
+    $(window).bind("load",function(){
+        $(".parallax").parallax();
+    });
+</script>
+</html>

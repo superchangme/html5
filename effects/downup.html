@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+       /* div{
+            position: relative;
+            width:100px;
+            height:100px;
+            background: darkcyan;
+            overflow: hidden;
+
+            -webkit-transition: all 3s ease-out;
+            *//* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  *//*
+            transition: all 3s ease-out;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+        div:after{
+            position: absolute;
+            content: "我是一个好人";
+            top:0;
+            left:100%;
+            height: 100%;
+            width:100%;
+            line-height: 100px;
+            text-align: center;
+            background: darkgoldenrod;
+            z-index: 1;
+        }
+        div.slide-in{
+            -webkit-transform: rotateY(360deg);
+        }*/
+        p{
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<!--
+     <div>A</div>
+<div><p>123</p><p>123</p><p>123</p><p>123</p><p>123</p><img height=800 style="float:left" src="../images/border.png"/></div>
+-->
+
+     <div style="text-align: center">
+         <img style="float:left" alt="" src="http://pacificcigar.bamboonetworks.com/pcc/data/attachment/image/20131115/0f11422fbf075f2c552cd50473eb164a.png" />
+         <div style="float:left">
+             <div class="p0" style="line-height:350px;"> 浅淡味道(volado)的茄芯及茄套最少储存陈化9个月。 </div>
+             <div class="p0" style="line-height:350px;"> 中等浓度(seco)的茄芯需要储存陈化12至18个月。 </div>
+             <div class="p0" style="line-height:350px;"> 浅淡味道(volado)的茄芯及茄套最少储存陈化9个月。 </div>
+             </div>
+         </div>
+</body>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script>
+     $("div").hover(
+             function(){$(this).addClass("slide-in")},
+             function(){$(this).removeClass("slide-in")})
+</script>
+</html>
+
+<form class="form-horizontal reg-pop-form ng-pristine ng-invalid ng-invalid-required" ng-submit="register()" name="registerForm">
+    <div class="col-sm-6">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The UserName field is required." id="UserName" name="UserName" ng-model="UserName" placeholder="Username" required="" type="text" value="">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" ng-model="Email" placeholder="Email" required="" type="email" value="">
+    </div>
+    <div class="form-group">
+        <label for="email">Full Name</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The FullName field is required." id="FullName" name="FullName" ng-model="FullName" placeholder="Full Name" required="" type="text" value="">
+    </div>
+    <div class="form-group">
+        <label for="email">Password</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" ng-model="Password" placeholder="Password" required="" type="password">
+    </div>
+    <div class="form-group">
+        <label for="email">Confirm Password</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The ConfirmPassword field is required." id="ConfirmPassword" name="ConfirmPassword" ng-model="ConfirmPassword" placeholder="Confirm Password" pw-check="Password" required="" type="password">
+        <span class="msg-error ng-hide" ng-show="registerForm.ConfirmPassword.$error.pwmatch">Passwords don't match.</span>
+    </div>
+    </div>
+    <div class="col-sm-6">
+    <div class="form-group">
+        <label for="email">Validation Code</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The ValidationCode field is required." id="ValidationCode" name="ValidationCode" ng-model="ValidationCode" placeholder="Validation Code" required="" type="text" value="">
+        <img src="/Trade/createImg.aspx">
+    </div>
+    <div class="form-group">
+        <label for="currency">Currency</label>
+        <select class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The Currency field is required." id="Currency" name="Currency" ng-model="Currency" required=""><option value="? undefined:undefined ?"></option><option value="CNY">CNY</option>
+            <option value="EUR">EUR</option>
+            <option selected="selected" value="USD">USD</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="currency">Question</label>
+        <select class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The Question field is required." id="Question" name="Question" ng-model="Question" required=""><option value="? undefined:undefined ?"></option><option selected="selected" value="0c192487-9259-4a75-b99e-0955d74ecf49">What's your father's name?</option>
+            <option value="6b2908e2-f18e-4b46-8980-1aad8b0fa171">What's your mother's birthday?</option>
+            <option value="2d3c2b44-e9a5-4d58-9fdd-bd74d96b1562">What's your father's birthday?</option>
+            <option value="2abab5d8-f4eb-4b33-bd7c-d5a3f34b045d">What's your mother's name?</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="email">Answer</label>
+        <input class="form-control ng-pristine ng-invalid ng-invalid-required" data-val="true" data-val-required="The Answer field is required." id="Answer" name="Answer" ng-model="Answer" placeholder="Answer" required="" type="text" value="">
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+</form>
